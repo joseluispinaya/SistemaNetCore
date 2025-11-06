@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Lista de Categorias";
+}
+
+@model List<Sistema.Entity.Categoria>
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-header">
+        Lista Categorias
+    </div>
+    <div class="card-body">
+        <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Crear Nuevo</a>
+        <hr />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Opciones del administrador</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var categoria in Model)
+                {
+                    <tr>
+                        <td>@categoria.IdCategoria</td>
+                        <td>@categoria.Nombre</td>
+                        <td>@categoria.Activo</td>
+                        <td>
+                            <a asp-action="Edit" class="btn btn-primary btn-sm"
+                               asp-route-id="@categoria.IdCategoria">Editar</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
